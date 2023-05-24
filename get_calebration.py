@@ -21,7 +21,7 @@ def get_celebration():
     soup = BeautifulSoup(src, 'lxml')
 
     celebrations = [
-        item.text
+        item.text + '\n'
         for item in soup.select('ul.holidays-items span, ul.holidays-items a')
         if item.text.strip() and not item.text.strip().isdigit()
     ]

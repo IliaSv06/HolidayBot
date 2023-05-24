@@ -1,4 +1,5 @@
 from telebot import TeleBot, types
+from get_calebration import get_celebration
 
 token = "5979518808:AAGmnFp_MNCwMFzEfpYEyhyIE5pQV_OL6Xs"
 
@@ -30,6 +31,7 @@ def take_over_handler(message):
 
 def give_holiday(message):
     "Выдает праздники дня"
-    # P.S Еще разрабатывается
+    result = ''.join(i for i in get_celebration())
+    bot.send_message(message.chat.id, f"Вот все праздники на {message.text}:\n{result}")
 
 bot.polling(non_stop = True, interval = 0)
