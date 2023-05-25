@@ -39,7 +39,7 @@ def get_celebration():
     return celebrations
 
 def get_CelDay(input_date : str):
-    if os.path.exists("index_year.html"):
+    if not os.path.exists("index_year.html"):
         get_year_html()
     with open('index_year.html', 'r', encoding="UTF-8") as file:
         src = file.read()
