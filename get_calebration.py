@@ -31,12 +31,12 @@ def get_celebration():
     soup = BeautifulSoup(src, 'lxml')
 
     celebrations = [
-        item.text
+        item.text + '\n'
         for item in soup.select('ul.holidays-items span, ul.holidays-items a')
         if item.text.strip() and not item.text.strip().isdigit()
     ]
 
-    return '\n'.join(celebrations)
+    return celebrations
 
 def get_CelDay(input_date : str):
     if not os.path.exists("index_year.html"):
@@ -61,7 +61,7 @@ def get_CelDay(input_date : str):
         if i[2:] in month or i[3:] in month:
             if input_date[:2] == i[:2] and month[i[3:]] == input_date[3:]:
                 triger = True
+    
+    result = [f"Вот праздники на {input_date}:\n"] + celebration
+    return result if celebration != [] else None
 
-    return celebration if celebration != [] else None
-
-print(get_celebration())

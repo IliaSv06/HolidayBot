@@ -32,7 +32,7 @@ def take_over_handler(message):
 
 def give_holiday(message):
     "Выдает праздники дня"
-    holiday = [f'Вот праздники на {message.text}:\n'] + get_CelDay(message.text) if match(r"\d{2}.\d{2}", message.text) else None
+    holiday = get_CelDay(message.text) if match(r"\d{2}.\d{2}", message.text) else None
     if holiday:
         result = ''.join(i for i in holiday)
         bot.send_message(message.chat.id, result)
